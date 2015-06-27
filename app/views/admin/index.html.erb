@@ -1,0 +1,10 @@
+<h1>Admin#index</h1>
+<p>Find me in app/views/admin/index.html.erb</p>
+
+<%= image_tag 'elephant.jpg', alt: 'This is a picture of an elephant', title: 'This is an elephant', class: 'img-thumbnail img-circle' %>
+
+<a href="<%= asset_path 'elephant.jpg' %>"
+
+<% if user_signed_in? %>
+  <p>Your email address is <%= current_user.email %></p>
+<% end %>
