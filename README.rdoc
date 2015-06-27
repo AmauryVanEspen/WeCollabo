@@ -3,3 +3,6 @@
 This is a web application built with Ruby on Rails.
 
 It is designed by Cat. 
+
+My name is Cat and I love coding! 
+
