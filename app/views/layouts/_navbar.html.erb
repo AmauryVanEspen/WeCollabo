@@ -37,6 +37,9 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
 
+      <li><%= link_to 'Resident businesses', business_profiles_path %></li>
+
+
         <% unless user_signed_in? %>
         <li><%= link_to 'Sign in', new_user_session_path %></li>
         <% else %>
@@ -54,8 +57,6 @@
             <%# current_user.profile.name if current_user.profile %>
 
             <span class="caret"></span></a>
-
-
 
           <ul class="dropdown-menu">
             <% if current_user.has_role? :admin %>
