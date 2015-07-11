@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :events
   resources :business_profiles do
     member do
       get :join
