@@ -10,7 +10,11 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem 'friendly_id'
 gem 'acts-as-taggable-on'
-
+gem 'geocoder'
+gem 'gmaps4rails'
+gem 'country_select'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -52,4 +56,9 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end

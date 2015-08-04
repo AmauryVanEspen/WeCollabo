@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :messages
+  get 'contact', to: 'contact#index'
+
+  resources :enquiries
   resources :events
   resources :business_profiles do
     member do
@@ -8,7 +12,7 @@ Rails.application.routes.draw do
     end
   end
   resources :profiles
-  devise_for :users, :controller => { :registration => "registrations" }
+  devise_for :users, :controllers => { :registration => "registrations", :omniauth_callbacks => "users/omniauth_callbacks" }
   get 'admin', to: 'admin#index'
 
   get 'home/index'

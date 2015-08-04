@@ -1,0 +1,28 @@
+<h1>Response has been received.</h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @enquiry.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @enquiry.email %>
+</p>
+
+<p>
+  <strong>Enquiry type:</strong>
+  <%= @enquiry.enquiry_type %>
+</p>
+
+<p>
+  <strong>message:</strong>
+  <%= @enquiry.message %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @enquiry.phone %>
+</p>
+
+<p><%= link_to 'Link to enquiry', enquiry_url(@enquiry) %></p>

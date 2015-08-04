@@ -28,7 +28,7 @@ class BusinessProfilesController < ApplicationController
   # GET /business_profiles/1.json
   def show
     @users = @business_profile.users
-    @events = @business_profile.events.future_events.chron_order.limit(3)
+    @events = @business_profile.events.future_events.chron_order.limit(100)
   end
 
   # GET /business_profiles/new
@@ -91,6 +91,6 @@ class BusinessProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def business_profile_params
-      params.require(:business_profile).permit(:name, :logo, :description, :head_count, :website_link, :tag_list)
+      params.require(:business_profile).permit(:street, :suburb, :state, :postcode, :name, :logo, :description, :head_count, :website_link, :tag_list)
     end
 end

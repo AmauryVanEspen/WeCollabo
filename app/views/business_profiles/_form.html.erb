@@ -8,6 +8,11 @@
     <%= f.input :head_count %>
     <%= f.input :website_link %>
     <%= f.input :tag_list %>
+    <%= f.input :street %>
+    <%= f.input :suburb %>
+    <%= f.input :state, collection: ['ACT', 'NSW', 'NT', 'QLD', 'SA', 'TAS', 'VIC', 'WA'] %>
+    <%= f.input :postcode %>
+    <%= f.input :country, priority: ['Australia', 'United Kingdom'] %>
   </div>
 
   <div class="form-actions">

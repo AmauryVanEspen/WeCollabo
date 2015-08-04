@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150711002324) do
+ActiveRecord::Schema.define(version: 20150801030028) do
 
   create_table "business_profiles", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20150711002324) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.string   "slug"
+    t.string   "street"
+    t.string   "suburb"
+    t.string   "state"
+    t.string   "postcode"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "country"
   end
 
   add_index "business_profiles", ["slug"], name: "index_business_profiles_on_slug", unique: true
@@ -35,6 +42,16 @@ ActiveRecord::Schema.define(version: 20150711002324) do
 
   add_index "business_users", ["business_profile_id"], name: "index_business_users_on_business_profile_id"
   add_index "business_users", ["user_id"], name: "index_business_users_on_user_id"
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email",        null: false
+    t.string   "enquiry_type"
+    t.string   "phone"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "message"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -68,6 +85,25 @@ ActiveRecord::Schema.define(version: 20150711002324) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+
+  create_table "message_recipients", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "message_id"
+    t.boolean  "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "message_recipients", ["message_id"], name: "index_message_recipients_on_message_id"
+  add_index "message_recipients", ["user_id"], name: "index_message_recipients_on_user_id"
+
+  create_table "messages", force: :cascade do |t|
+    t.integer  "sender_id"
+    t.string   "subject"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -125,10 +161,16 @@ ActiveRecord::Schema.define(version: 20150711002324) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["provider"], name: "index_users_on_provider"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["uid"], name: "index_users_on_uid"
 
   create_table "users_roles", id: false, force: :cascade do |t|
     t.integer "user_id"
